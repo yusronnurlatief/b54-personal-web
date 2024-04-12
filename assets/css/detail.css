@@ -1,0 +1,143 @@
+@font-face {
+  font-family: "Poppins-Regular";
+  src: url(../font/Poppins-Regular.ttf);
+}
+
+body {
+  font-family: "Poppins-Regular", serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  font-size: 40px;
+}
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: whitesmoke;
+}
+
+nav .navbar-right {
+  margin-right: 80px;
+}
+.contactMe {
+  font-family: "Poppins-Regular", sans-serif;
+  margin-left: 2px;
+  background-color: #07031d;
+  border: none;
+  border-radius: 10px 10px 10px 10px;
+  color: white;
+  padding: 6px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+nav .navbar-left ul {
+  display: flex;
+  align-items: center;
+}
+nav .navbar-left ul li {
+  list-style-type: none;
+  margin-right: 50px;
+}
+nav .navbar-left ul .active {
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+  background-color: rgb(240, 236, 235);
+  border-radius: 10px;
+}
+nav .navbar-left ul a {
+  text-decoration: none;
+  color: black;
+}
+nav .navbar-left .logo {
+  width: 50px;
+  height: 40px;
+  padding-left: 50px;
+  margin-right: 50px;
+  object-fit: cover;
+}
+
+#projectDetail {
+  background-color: rgb(238, 238, 238);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-cont {
+  width: 100%;
+}
+.main-cont h2 {
+  text-align: center;
+}
+
+.up-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-cont {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.title-info{
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+}
+.time-info{
+  margin: 0;
+  padding: 0;
+  color: rgb(146, 145, 145);
+}
+
+.flex-cont .image-content {
+  width: 50%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.info-cont {
+  width: 40%;
+  display: block;
+}
+
+.img-cont {
+  display: grid;
+  grid-template-columns: 200px 200px;
+  margin-top: 10px;
+  margin-bottom: 1rem;
+}
+.img-cont img {
+  height: 30px;
+  width: 30px;
+  object-fit: cover;
+}
+.img-cont p {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.content-detail{
+  margin: auto;
+  width: 90%;
+  text-align: justify;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}

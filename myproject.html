@@ -1,0 +1,113 @@
+<html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>My Project</title>
+      <link rel="stylesheet" href="./assets/css/myProject.css" />
+    </head>
+    <body>
+      <nav>
+        <div class="navbar-left">
+          <ul>
+            <img
+              class="logo"
+              src="./assets/image/brandred.png"
+              alt="dumbways"
+            />
+            <a href="index.html"><li>Home</li></a>
+            <li class="active">My Project</li>
+          </ul>
+        </div>
+        <div class="navbar-right">
+          <a class="contactMe" href="contactForm.html">Contact Me</a>
+        </div>
+      </nav>
+
+      <div class="myproject">
+        <form>
+          <h1>ADD MY PROJECT</h1>
+          <div class="input-box">
+            <label for="projectName">Project Name</label>
+            <input type="text" id="projectName" />
+          </div>
+          <div class="column">
+            <div class="input-box">
+              <label for="startdate">Start Date</label>
+              <input type="date" id="startdate" name="startdate" />
+            </div>
+            <div class="input-box">
+              <label for="enddate">End Date</label>
+              <input type="date" id="enddate" name="enddate" />
+            </div>
+          </div>
+
+          <div class="input-box">
+            <label for="Content">Description</label>
+            <textarea
+              name="Content"
+              id="Content"
+              cols="30"
+              rows="30"
+            ></textarea>
+          </div>
+          <div>
+            <label for="technologies">Technologies</label>
+          </div>
+          <div>
+            <div class="checker">
+              <div class="checkname">
+                <input type="checkbox" id="checkbox1" class="rounded" />
+                <label class="check">Node Js </label>
+              </div>
+              <div class="checkname">
+                <input type="checkbox" id="checkbox2" class="rounded" />
+                <label class="check">Next Js </label>
+              </div>
+              <div class="checkname">
+                <input type="checkbox" id="checkbox3" class="rounded" />
+                <label class="check">React Js </label>
+              </div>
+              <div class="checkname">
+                <input type="checkbox" id="checkbox4" class="rounded" />
+                <label class="check">Typescript </label>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label for=""> Upload Image </label>
+          </div>
+          <div>
+            <input type="file" class="customFile" id="input-image" />
+          </div>
+
+          <div class="sumbit">
+            <button type="input" id="toggle-bt" class="tombol" onclick="addProject(event)">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="wrap"  id="hidden-item">
+        <p class="wrap-title">MY PROJECT</p>
+        <div class="back-container">
+          <div class="container" id="card">
+            
+          </div>
+        </div>
+        </div>
+        
+      <!-- Pop-up -->
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <img src="./assets/image/alert.png" alt="" />
+          <p id="modalMessage"></p>
+        </div>
+      </div>
+      <script src="./assets/js/myProject.js"></script>
+    </body>
+  </html>
+</html>
