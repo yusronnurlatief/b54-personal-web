@@ -168,5 +168,5 @@ function showDetail(index) {
     project.duration
   )}`;
 
-  window.location.href = detailURL;
+  window.open(detailURL,"_blank");
 }

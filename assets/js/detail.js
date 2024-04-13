@@ -21,14 +21,14 @@ window.onload = function () {
                     <img class="image-content" src="${image}" alt="Project Image" />
                     <div class="info-cont">
                         <P class="title-info">Duration</P>
-                        <p class="time-info">${startdate} - ${enddate}</p>
-                        <p class="time-info">${duration}</p>
-                        <p class="title-info">Technologies</p>
+                        <p class="time-info"><img class="icon-time" src="./assets/image/calendar.png" alt="">${startdate} - ${enddate}</p>
+                        <p class="time-info"><img class="icon-time" src="./assets/image/clock.png" alt="">${duration}</p>
+                        <p class="tech">Technologies</p>
                         <div class="img-cont">
-                            <p><img src="./assets/image/playstore.png" alt="">React JS</p>
-                            <p><img src="./assets/image/playstore.png" alt="">Node JS</p>
-                            <p><img src="./assets/image/playstore.png" alt="">Javascript</p>
-                            <p><img src="./assets/image/playstore.png" alt="">Socket IO</p>
+                            <p><img src="./assets/image/atom.png" alt="">React JS</p>
+                            <p><img src="./assets/image/js.jpg" alt="">Javascript</p>
+                            <p><img src="./assets/image/Untitled-1.png" alt="">Node JS</p>
+                            <p><img src="./assets/image/electricity.png" alt="">Socket IO</p>
                         </div>
                     </div>
                 </div>
