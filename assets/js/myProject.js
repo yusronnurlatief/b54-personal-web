@@ -115,7 +115,7 @@ function newData() {
           <img src="${project.image}" alt="Image">
           <p class="title-content">${project.title}</p>
           <p class="duration">Duration: ${project.duration}</p>
-          <p class="content-wrap">Dumbways Apss</p>
+          <p class="content-wrap">Dumbways Web Apps</p>
           <div class="icon">
             <img src="./assets/image/playstore.png" alt="">
             <img src="./assets/image/android.png" alt="">
