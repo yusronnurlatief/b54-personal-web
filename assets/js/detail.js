@@ -8,7 +8,26 @@ window.onload = function () {
   const image = urlParams.get("image");
   const duration = urlParams.get("duration");
 
-  console.log(image);
+const startDate = new Date(startdate);
+const endDate = new Date(enddate);
+
+const daftarBulan = [
+  "Jan", "Feb", "Mar", "April", "Mei", "June",
+  "July", "August", "Sept", "Oct", "Nov", "Des"
+];
+
+const startTanggalFix = startDate.getDate();
+const startBulanFix = daftarBulan[startDate.getMonth()];
+const startTahunFix = startDate.getFullYear();
+
+const startTanggalAkhir = startTanggalFix + ' ' + startBulanFix + ' ' + startTahunFix;
+
+const endTanggalFix = endDate.getDate();
+const endBulanFix = daftarBulan[endDate.getMonth()];
+const endTahunFix = endDate.getFullYear();
+
+const endTanggalAkhir = endTanggalFix + ' ' + endBulanFix + ' ' + endTahunFix;
+
   
 
   // Tampilkan detail proyek
@@ -21,7 +40,7 @@ window.onload = function () {
                     <img class="image-content" src="${image}" alt="Project Image" />
                     <div class="info-cont">
                         <P class="title-info">Duration</P>
-                        <p class="time-info"><img class="icon-time" src="./assets/image/calendar.png" alt="">${startdate} - ${enddate}</p>
+                        <p class="time-info"><img class="icon-time" src="./assets/image/calendar.png" alt="">${startTanggalAkhir} - ${endTanggalAkhir}</p>
                         <p class="time-info"><img class="icon-time" src="./assets/image/clock.png" alt="">${duration}</p>
                         <p class="tech">Technologies</p>
                         <div class="img-cont">
