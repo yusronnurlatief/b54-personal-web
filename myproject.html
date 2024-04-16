@@ -8,25 +8,43 @@
     </head>
     <body>
       <nav>
-        <div class="navbar-left">
-          <ul>
-            <img
-              class="logo"
-              src="./assets/image/brandred.png"
-              alt="dumbways"
-            />
-            <a href="index.html"><li>Home</li></a>
-            <li class="active">My Project</li>
-          </ul>
+        <div class="tambahan">
+          <img class="logo" src="./assets/image/brandred.png" alt="dumbways" />
+          <div class="navbar-left">
+            <ul>
+              <a href="index.html"><li >Home</li></a>
+              <a href="myproject.html"><li  class="active">My Project</li></a>
+            </ul>
+          </div>
         </div>
         <div class="navbar-right">
           <a class="contactMe" href="contactForm.html">Contact Me</a>
+          <div class="showing">
+              <div class="menu-toggle">
+                <input type="checkbox" id="toggle-menu" />
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+          </div>
         </div>
       </nav>
+      <div class="dropdown" >
+        <div class="menu-dropdown">
+          <a href="index.html" >Home</a>
+        </div>
+        <div class="menu-dropdown">
+          <a href="myproject.html"class="on"> My Project</a>
+        </div>
+        <div class="menu-dropdown">
+          <a href="contactForm.html" >Contact Me</a>
+        </div>
+      </div>
+
 
       <div class="myproject">
         <form>
-          <h1>ADD MY PROJECT</h1>
+          <h1 class="main-title">ADD MY PROJECT</h1>
           <div class="input-box">
             <label for="projectName">Project Name</label>
             <input type="text" id="projectName" />

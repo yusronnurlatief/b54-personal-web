@@ -5,21 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Me</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/contact.css">
 </head>
 <body>
     <nav>
-        <div class="navbar-left">
+        <div class="tambahan">
+          <img class="logo" src="./assets/image/brandred.png" alt="dumbways" />
+          <div class="navbar-left">
             <ul>
-                <img class="logo" src="./assets/image/brandred.png" alt="dumbways">
-                <a href="index.html"><li>Home</li></a>
-                <a href="myproject.html"><li>My Project</li></a>
-           </ul>        
+              <a href="index.html"><li >Home</li></a>
+              <a href="myproject.html"><li>My Project</li></a>
+            </ul>
+          </div>
         </div>
         <div class="navbar-right">
-            <a class="contactMe" href="contactForm.html">Contact Me</a>
+          <a class="contactMe" href="contactForm.html">Contact Me</a>
+          <div class="showing">
+              <div class="menu-toggle">
+                <input type="checkbox" id="toggle-menu" />
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+          </div>
         </div>
-    </nav>
+      </nav>
+      <div class="dropdown" >
+        <div class="menu-dropdown">
+          <a href="index.html" >Home</a>
+        </div>
+        <div class="menu-dropdown">
+          <a href="myproject.html"> My Project</a>
+        </div>
+        <div class="menu-dropdown">
+          <a href="contactForm.html" class="on">Contact Me</a>
+        </div>
+      </div>
+
         <h1>GET IN TOUCH</h1>
         <form>
             <div>

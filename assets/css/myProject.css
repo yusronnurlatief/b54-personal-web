@@ -5,11 +5,13 @@
 
 body {
   font-family: "Poppins-Regular", serif;
+  background-color: #dce0e4;
   margin: 0;
   padding: 0;
 }
 
 h1 {
+  padding-top: 30px;
   text-align: center;
   font-size: 40px;
 }
@@ -20,9 +22,14 @@ nav {
   background-color: whitesmoke;
 }
 
+.tambahan {
+  display: flex;
+}
+
 nav .navbar-right {
   margin-right: 80px;
 }
+
 .contactMe {
   font-family: "Poppins-Regular", sans-serif;
   margin-left: 2px;
@@ -38,15 +45,15 @@ nav .navbar-right {
   font-weight: bold;
   cursor: pointer;
 }
-nav .navbar-left ul {
+nav .tambahan .navbar-left ul {
   display: flex;
   align-items: center;
 }
-nav .navbar-left ul li {
+nav .tambahan .navbar-left ul li {
   list-style-type: none;
   margin-right: 50px;
 }
-nav .navbar-left ul .active {
+nav .tambahan .navbar-left ul .active {
   color: black;
   font-weight: bold;
   font-size: 20px;
@@ -57,16 +64,94 @@ nav .navbar-left ul a {
   text-decoration: none;
   color: black;
 }
-nav .navbar-left .logo {
+nav .tambahan .logo {
   width: 50px;
   height: 40px;
-  padding-left: 50px;
-  margin-right: 50px;
+  margin: 10px 10px 10px 10px;
+  padding-left: 20px;
   object-fit: cover;
+}
+/* Hamburger menu*/
+.dropdown {
+  display: none;
+  width: 100%;
+  background-color: #d3d3d3;
+  flex-direction: column;
+}
+
+.dropdown .menu-dropdown {
+  text-align: center;
+  padding: 10px 0px;
+  width: 100%;
+}
+
+.dropdown .menu-dropdown a {
+  text-decoration: none;
+  color: black;
+}
+
+.on {
+  font-family: "Poppins-Regular", sans-serif;
+  margin-left: 2px;
+  background-color: #07031d;
+  border: none;
+  border-radius: 10px 10px 10px 10px;
+  color: white !important;
+  padding: 5px 50px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  cursor: pointer;
+}
+.showing {
+  display: none;
+}
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  height: 20px;
+  justify-content: space-between;
+  position: relative;
+}
+.menu-toggle input {
+  position: absolute;
+  width: 40px;
+  height: 30px;
+  left: -14px;
+  top: -10px;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+.menu-toggle span {
+  display: block;
+  width: 20px;
+  height: 3px;
+  background-color: rgb(0, 0, 0);
+  border-radius: 3px;
+  transition: all 0.5s;
+}
+
+.menu-toggle span:nth-child(2) {
+  transform-origin: 0 0;
+}
+.menu-toggle span:nth-child(4) {
+  transform-origin: 0 100%;
+}
+
+.menu-toggle input:checked ~ span:nth-child(2) {
+  transform: rotate(45deg) translate(2.7px, 0px);
+}
+.menu-toggle input:checked ~ span:nth-child(4) {
+  transform: rotate(-45deg) translate(2px, 0px);
+}
+.menu-toggle input:checked ~ span:nth-child(3) {
+  transform: scale(0);
 }
 
 /* Form My Project */
-.myproject{
+.myproject {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -74,33 +159,33 @@ nav .navbar-left .logo {
   width: 100%;
 }
 
-h1{
-    font-size: 50px;
-    font-weight: 100%;
+.main-title {
+  font-size: 50px;
+  font-weight: 100%;
 }
 form {
   width: 55%;
   margin: 50px auto;
 }
 
-form .input-box{ 
-    width: 100%;
+form .input-box {
+  width: 100%;
 }
-form .column{
-    display: flex;
-    column-gap: 15px;
+form .column {
+  display: flex;
+  column-gap: 15px;
 }
 
-.input-box input{
-    position: relative;
-    height: 60px;
-    width: 100%;
-    margin-bottom: 20px;
-    outline: none;
-    border: 1px solid #ddd;
-    box-shadow: 0px 0px 0px 5px 10px gainsboro;
-    border-radius: 5px;
-    padding: 0 15px;
+.input-box input {
+  position: relative;
+  height: 60px;
+  width: 100%;
+  margin-bottom: 20px;
+  outline: none;
+  border: 1px solid #ddd;
+  box-shadow: 0px 0px 0px 5px 10px gainsboro;
+  border-radius: 5px;
+  padding: 0 15px;
 }
 
 textarea {
@@ -122,22 +207,22 @@ textarea {
   height: 200px;
 }
 
-form .checker{
+form .checker {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   margin-top: 10px;
   margin-bottom: 1rem;
 }
 
-form .checker .checkname{
+form .checker .checkname {
   display: flex;
-  gap: .5rem;
+  gap: 0.5rem;
   align-items: center;
 }
 
-form .checker .checkname label{
-color: gray;
-font-weight: 200;
+form .checker .checkname label {
+  color: gray;
+  font-weight: 200;
 }
 
 .rounded {
@@ -181,7 +266,7 @@ font-weight: 200;
   transition-delay: 0.2s;
 }
 
-.customFile{
+.customFile {
   border: 0.8px solid rgb(100, 99, 99);
   background-color: #ffffff;
   color: transparent;
@@ -191,11 +276,11 @@ font-weight: 200;
   margin-bottom: 20px;
   border-radius: 15px;
 }
-.customFile::-webkit-file-upload-button{
+.customFile::-webkit-file-upload-button {
   font-family: "Poppins-Regular", sans-serif;
   font-size: 20px;
   background-image: linear-gradient(#dbdbdb);
-  color:  rgb(100, 99, 99);
+  color: rgb(100, 99, 99);
   height: 60px;
   width: 100px;
   border: 1px solid rgb(100, 99, 99);
@@ -252,70 +337,69 @@ font-weight: 200;
   cursor: pointer;
 }
 
-.wrap{
+.wrap {
   display: none;
   background-color: #f3f3f3;
   width: 100%;
   padding-bottom: 20px;
 }
-.wrap .wrap-title{
-
+.wrap .wrap-title {
   margin: 0px 0px 30px 0px;
   padding-top: 20px;
   font-size: 45px;
   font-weight: 900;
   text-align: center;
 }
-.back-container{
+.back-container {
   display: flex;
   width: 100%;
 }
-.container{
+.container {
   width: 100%;
   display: grid;
   grid-template-columns: 400px 400px 400px;
   grid-gap: 20px;
 }
-.card{
+.card {
   width: 300px;
   background-color: white;
   margin-left: 60px;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0px 0px 10px 5px 	gainsboro;
+  box-shadow: 0px 0px 10px 5px gainsboro;
 }
-.card img{
+.card img {
   width: 100%;
   height: 200px;
   object-fit: cover;
   border-radius: 6px;
 }
 
-.title-content{
+.title-content {
   font-size: 16px;
   font-weight: bold;
   margin: 10px 0px 0px 0px;
   cursor: pointer;
 }
-.duration{
+.duration {
   font-size: 16px;
   margin: 0px 0px 0px 0px;
   color: #8e8e8e;
 }
 
-.content-wrap{
+.content-wrap {
   font-size: 13px;
   margin: 10px 40px 0px 0px;
   padding-bottom: 10px;
   text-align: justify;
 }
 
-.bt-card{
+.bt-card {
   width: 100%;
   display: flex;
   column-gap: 15px;
 }
-.bt-card button{
+.bt-card button {
   position: relative;
   height: 30px;
   width: 100%;
@@ -331,14 +415,31 @@ font-weight: 200;
   cursor: pointer;
 }
 
-.icon{
+.icon {
   display: flex;
   gap: 30px;
-  margin: 30px 0px ;
+  margin: 30px 0px;
 }
 
-.icon img{
+.icon img {
   width: 30px;
   height: 30px;
 }
 
+@media only screen and (max-width: 741px) {
+  .navbar-left,
+  .contactMe {
+    display: none;
+  }
+  .showing {
+    display: block;
+  }
+  .container {
+    grid-template-columns: 1fr 1fr;
+
+  }
+  .card {
+    width: 300px;
+    margin: 0;
+  }
+}

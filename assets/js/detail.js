@@ -1,3 +1,15 @@
+const toggleCheckbox = document.getElementById('toggle-menu');
+const dropdownMenu = document.querySelector('.dropdown');
+
+toggleCheckbox.addEventListener('change', function() {
+
+  if (toggleCheckbox.checked) {
+    dropdownMenu.style.display = 'block';
+  } else {
+    dropdownMenu.style.display = 'none';
+  }
+});
+
 window.onload = function () {
   // Ambil parameter dari URL
   const urlParams = new URLSearchParams(window.location.search);

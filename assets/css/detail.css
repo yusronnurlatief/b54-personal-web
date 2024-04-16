@@ -5,11 +5,13 @@
 
 body {
   font-family: "Poppins-Regular", serif;
+  background-color: #dce0e4;
   margin: 0;
   padding: 0;
 }
 
 h1 {
+  padding-top: 30px;
   text-align: center;
   font-size: 40px;
 }
@@ -20,9 +22,14 @@ nav {
   background-color: whitesmoke;
 }
 
+.tambahan {
+  display: flex;
+}
+
 nav .navbar-right {
   margin-right: 80px;
 }
+
 .contactMe {
   font-family: "Poppins-Regular", sans-serif;
   margin-left: 2px;
@@ -38,15 +45,15 @@ nav .navbar-right {
   font-weight: bold;
   cursor: pointer;
 }
-nav .navbar-left ul {
+nav .tambahan .navbar-left ul {
   display: flex;
   align-items: center;
 }
-nav .navbar-left ul li {
+nav .tambahan .navbar-left ul li {
   list-style-type: none;
   margin-right: 50px;
 }
-nav .navbar-left ul .active {
+nav .tambahan .navbar-left ul .active {
   color: black;
   font-weight: bold;
   font-size: 20px;
@@ -57,12 +64,90 @@ nav .navbar-left ul a {
   text-decoration: none;
   color: black;
 }
-nav .navbar-left .logo {
+nav .tambahan .logo {
   width: 50px;
   height: 40px;
-  padding-left: 50px;
-  margin-right: 50px;
+  margin: 10px 10px 10px 10px;
+  padding-left: 20px;
   object-fit: cover;
+}
+/* Hamburger menu*/
+.dropdown {
+  display: none;
+  width: 100%;
+  background-color: #d3d3d3;
+  flex-direction: column;
+}
+
+.dropdown .menu-dropdown {
+  text-align: center;
+  padding: 10px 0px;
+  width: 100%;
+}
+
+.dropdown .menu-dropdown a {
+  text-decoration: none;
+  color: black;
+}
+
+.on {
+  font-family: "Poppins-Regular", sans-serif;
+  margin-left: 2px;
+  background-color: #07031d;
+  border: none;
+  border-radius: 10px 10px 10px 10px;
+  color: white !important;
+  padding: 5px 50px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  cursor: pointer;
+}
+.showing {
+  display: none;
+}
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  height: 20px;
+  justify-content: space-between;
+  position: relative;
+}
+.menu-toggle input {
+  position: absolute;
+  width: 40px;
+  height: 30px;
+  left: -14px;
+  top: -10px;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+.menu-toggle span {
+  display: block;
+  width: 20px;
+  height: 3px;
+  background-color: rgb(0, 0, 0);
+  border-radius: 3px;
+  transition: all 0.5s;
+}
+
+.menu-toggle span:nth-child(2) {
+  transform-origin: 0 0;
+}
+.menu-toggle span:nth-child(4) {
+  transform-origin: 0 100%;
+}
+
+.menu-toggle input:checked ~ span:nth-child(2) {
+  transform: rotate(45deg) translate(2.7px, 0px);
+}
+.menu-toggle input:checked ~ span:nth-child(4) {
+  transform: rotate(-45deg) translate(2px, 0px);
+}
+.menu-toggle input:checked ~ span:nth-child(3) {
+  transform: scale(0);
 }
 
 #projectDetail {
@@ -75,6 +160,7 @@ nav .navbar-left .logo {
 
 .main-cont {
   width: 100%;
+
 }
 .main-cont h2 {
   text-align: center;
@@ -156,4 +242,33 @@ nav .navbar-left .logo {
   text-align: justify;
   padding-top: 20px;
   padding-bottom: 40px;
+}
+
+@media only screen and (max-width: 741px) {
+  .navbar-left,
+  .contactMe {
+    display: none;
+  }
+  .showing {
+    display: block;
+  }
+
+.flex-cont{
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+.image-content{
+  width: 100%;
+}
+.content-detail{
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+.img-cont {
+
+  grid-template-columns: 1fr 1fr;
+
+}
 }
