@@ -1,16 +1,4 @@
 
-const toggleCheckbox = document.getElementById('toggle-menu');
-const dropdownMenu = document.querySelector('.dropdown');
-
-toggleCheckbox.addEventListener('change', function() {
-
-  if (toggleCheckbox.checked) {
-    dropdownMenu.style.display = 'block';
-  } else {
-    dropdownMenu.style.display = 'none';
-  }
-});
-
 function showModal(message) {
     let modal = document.getElementById("myModal");
     let modalMessage = document.getElementById("modalMessage");
