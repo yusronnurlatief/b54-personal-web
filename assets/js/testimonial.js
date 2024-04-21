@@ -1,47 +1,67 @@
-class Testimonial {
-  image = "";
-  content = "";
-  author = "";
+async function getTestimonialData(url) {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
 
-  constructor(image, content, author) {
-    this.image = image;
-    this.content = content;
-    this.author = author;
+    xhr.open("GET",url , true);
+
+    xhr.onload = function () {
+      resolve(xhr.responseText);
+    };
+    xhr.onerror = function () {
+      reject(new Error("Request failed"));
+    };
+
+    xhr.send();
+  });
+}
+
+async function fetchData() {
+  try {
+    const response = await getTestimonialData("https://api.npoint.io/ea58f243f6bb575ddb7b");
+    console.log(JSON.parse(response),"Done Fetching");
+
+  } catch (error) {
+    console.error("Error:", error.message);
   }
+}
 
-  html() {
-    return `
+fetchData();
+
+async function alltestimonial() {
+  const testimonials =JSON.parse(await getTestimonialData("https://api.npoint.io/ea58f243f6bb575ddb7b") );
+  if( !testimonials.length){
+      return document.getElementById("testimonials").innerHTML=`<h1>Data Not Found</h1>`
+  }
+const testimonialHTML = testimonials.map((testimonial) => {
+  return `
     <div class="testimonial">
-    <img src="${this.image}" alt="profile">
-    <p class="quote">${this.content}</p>
-    <p class="author">-${this.author}</p>
+    <img src="${testimonial.image}" alt="profile">
+    <p class="quote">${testimonial.content}</p>
+    <p class="author">-${testimonial.author}</p>
     </div>
     `;
+});
+
+document.getElementById("testimonials").innerHTML = testimonialHTML.join("");
+}
+
+async function filterTestimonial(rating) {
+  const testimonials = JSON.parse (await getTestimonialData("https://api.npoint.io/ea58f243f6bb575ddb7b"));
+  const filteredTestimonial = testimonials.filter(testimonial=>testimonial.rating == rating)
+
+  if( !filteredTestimonial.length){
+      return document.getElementById("testimonials").innerHTML=`<h1>Data Not Found</h1>`
   }
+  const testimonialHTML = filteredTestimonial.map((testimonial) => {
+      return `
+        <div class="testimonial">
+        <img src="${testimonial.image}" alt="profile">
+        <p class="quote">${testimonial.content}</p>
+        <p class="author">-${testimonial.author}</p>
+        </div>
+        `;
+    })
+    document.getElementById("testimonials").innerHTML = testimonialHTML.join("");
 }
 
-const testimonial1 = new Testimonial(
-  "https://images.pexels.com/photos/2213575/pexels-photo-2213575.jpeg?auto=compress&cs=tinysrgb&w=600",
-  "Mantap sekali brow!!!",
-  "Monyet"
-);
-const testimonial2 = new Testimonial(
-  "https://images.pexels.com/photos/2213575/pexels-photo-2213575.jpeg?auto=compress&cs=tinysrgb&w=600",
-  "GG Bang!!!",
-  "Kungkung"
-);
-const testimonial3 = new Testimonial(
-  "https://images.pexels.com/photos/2213575/pexels-photo-2213575.jpeg?auto=compress&cs=tinysrgb&w=600",
-  "Bolehlah Pak Cik",
-  "Lemur"
-);
-
-const Testimonials = [testimonial1, testimonial2, testimonial3];
-
-let tesimonialHTML = "";
-
-for (let index = 0; index < Testimonials.length; index++) {
-  tesimonialHTML += Testimonials[index].html()
-}
-
-document.getElementById("testimonials").innerHTML = tesimonialHTML
+alltestimonial();
