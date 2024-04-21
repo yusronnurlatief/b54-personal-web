@@ -21,19 +21,19 @@ class Testimonial {
 }
 
 const testimonial1 = new Testimonial(
-  "https://images.pexels.com/photos/2213575/pexels-photo-2213575.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://images.pexels.com/photos/1668203/pexels-photo-1668203.jpeg?auto=compress&cs=tinysrgb&w=600",
   "Mantap sekali brow!!!",
-  "Monyet"
+  "Michael"
 );
 const testimonial2 = new Testimonial(
-  "https://images.pexels.com/photos/2213575/pexels-photo-2213575.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://images.pexels.com/photos/1416971/pexels-photo-1416971.jpeg?auto=compress&cs=tinysrgb&w=600",
   "GG Bang!!!",
-  "Kungkung"
+  "Jason"
 );
 const testimonial3 = new Testimonial(
-  "https://images.pexels.com/photos/2213575/pexels-photo-2213575.jpeg?auto=compress&cs=tinysrgb&w=600",
-  "Bolehlah Pak Cik",
-  "Lemur"
+  "https://images.pexels.com/photos/3707987/pexels-photo-3707987.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "Joss",
+  "Mac Arthur"
 );
 
 const Testimonials = [testimonial1, testimonial2, testimonial3];
