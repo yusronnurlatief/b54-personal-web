@@ -15,7 +15,7 @@ h1 {
 }
 .container {
   width: 100%;
-  padding: 20px;
+  padding-top: 20px;
   margin: auto;
   display: flex; 
   flex-wrap: wrap; 
