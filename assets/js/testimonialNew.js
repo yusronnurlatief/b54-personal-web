@@ -36,6 +36,9 @@ const testimonials = [
   },
 ];
 function alltestimonial() {
+    if( !testimonials.length){
+        return document.getElementById("testimonials").innerHTML=`<h1>Data Not Found</h1>`
+    }
   const testimonialHTML = testimonials.map((testimonial) => {
     return `
       <div class="testimonial">
@@ -52,7 +55,7 @@ function alltestimonial() {
 function filterTestimonial(rating) {
     const filteredTestimonial = testimonials.filter(testimonial=>testimonial.rating == rating)
 
-    if( filteredTestimonial.length<=0){
+    if( !filteredTestimonial.length){
         return document.getElementById("testimonials").innerHTML=`<h1>Data Not Found</h1>`
     }
     const testimonialHTML = filteredTestimonial.map((testimonial) => {
