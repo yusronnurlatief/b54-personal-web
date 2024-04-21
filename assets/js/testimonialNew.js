@@ -1,37 +1,37 @@
 const testimonials = [
   {
     image:
-      "https://images.pexels.com/photos/2213575/pexels-photo-2213575.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/1668203/pexels-photo-1668203.jpeg?auto=compress&cs=tinysrgb&w=600",
     content: "Mantap sekali brow!!!",
-    author: "Monyet",
+    author: "Michael",
     rating: 2,
   },
   {
     image:
-      "https://images.pexels.com/photos/2213575/pexels-photo-2213575.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/1416971/pexels-photo-1416971.jpeg?auto=compress&cs=tinysrgb&w=600",
     content: "GG Bang!!!",
-    author: "Kungkung",
+    author: "Jason",
     rating: 4,
   },
   {
     image:
-      "https://images.pexels.com/photos/2213575/pexels-photo-2213575.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/3707987/pexels-photo-3707987.jpeg?auto=compress&cs=tinysrgb&w=600",
     content: "Joss",
-    author: "Lemur",
+    author: "Mac Arthur",
     rating: 3,
   },
   {
     image:
-      "https://images.pexels.com/photos/2213575/pexels-photo-2213575.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/3626050/pexels-photo-3626050.jpeg?auto=compress&cs=tinysrgb&w=600",
     content: "Very Well",
-    author: "Ketek",
+    author: "John",
     rating: 5,
   },
   {
     image:
-      "https://images.pexels.com/photos/2213575/pexels-photo-2213575.jpeg?auto=compress&cs=tinysrgb&w=600",
-    content: "Noobb",
-    author: "King Kong",
+      "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=600",
+    content: "Nice Broo",
+    author: "David",
     rating: 5,
   },
 ];
