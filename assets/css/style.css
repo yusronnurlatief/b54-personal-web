@@ -77,7 +77,7 @@ h1 {
   width: 85%;
   background-color: white;
   border-radius: 10px;
-  box-shadow: 0px 0px 5px 10px gainsboro;
+  box-shadow: 0px 0px 10px 10px gainsboro;
 }
 
 .main-container {
@@ -140,7 +140,7 @@ h1 {
   width: 30%;
   display: flex;
   align-items: center;
-  padding-right: 30px;
+  margin-right: 30px;
 }
 .main-card {
   margin: 0px auto;
