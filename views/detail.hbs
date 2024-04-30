@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Detail</title>
+    <link rel="stylesheet" href="../assets/css/detail.css" />
+    <link rel="stylesheet" href="../assets/css/nav.css">
+  </head>
+  <body>
+    <nav>
+      <div class="tambahan">
+        <img class="logo" src="../assets/image/brandred.png" alt="dumbways" />
+        <div class="navbar-left">
+          <ul>
+            <a href=""><li >Home</li></a>
+            <a href="myproject"><li  class="active">My Project</li></a>
+          </ul>
+        </div>
+      </div>
+      <div class="navbar-right">
+        <a class="contactMe" href="contactForm">Contact Me</a>
+        <div class="showing">
+            <div class="menu-toggle">
+              <input type="checkbox" id="toggle-menu" />
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+        </div>
+      </div>
+    </nav>
+    <div class="dropdown" >
+      <div class="menu-dropdown">
+        <a href="/" >Home</a>
+      </div>
+      <div class="menu-dropdown">
+        <a href="myproject"class="on"> My Project</a>
+      </div>
+      <div class="menu-dropdown">
+        <a href="contactForm" >Contact Me</a>
+      </div>
+    </div>
+    
+    <div id="projectDetail">
+       <div class="main-cont">
+        <h1>{{data.title}}</h1>
+            <div class="up-container">
+                <div class="flex-cont">
+                    <img class="image-content" src="default.jpg" alt="Project Image" />
+                    <div class="info-cont">
+                        <P class="title-info">Duration</P>
+                        <p class="time-info"><img class="icon-time" src="../assets/image/calendar.png" alt="">{{data.startdate}} - {{data.enddate}}</p>
+                        <p class="time-info"><img class="icon-time" src="../assets/image/clock.png" alt=""></p>
+                        <p class="tech">Technologies</p>
+                        <div class="img-cont">
+                            <p><img src="../assets/image/atom.png" alt="">React JS</p>
+                            <p><img src="../assets/image/js.jpg" alt="">Javascript</p>
+                            <p><img src="../assets/image/Untitled-1.png" alt="">Node JS</p>
+                            <p><img src="../assets/image/electricity.png" alt="">Socket IO</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="content-detail">{{data.content}}</p>
+    </div>
+
+    </div>
+
+    {{!-- <script src="../assets/js/detail.js"></script> --}}
+    <script src="../assets/js/nav.js"></script>
+  </body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Web</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/nav.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+
+  <style>
+    .btn-warning {
+      background-color: #07031d !important;
+      color: white !important;
+      border: 1px solid #07031d !important;
+    }
+
+    .nav-link {
+      font-size: 18px !important;
+    }
+
+    .active {
+      font-weight: bold !important;
+    }
+     .wrap {
+      display: block;
+      background-color: #f3f3f3;
+      width: 100%;
+      padding-bottom: 20px;
+    }
+        .back-container {
+      display: flex;
+      width: 100%;
+    }
+
+    .container1 {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+        justify-content: center; 
+  align-items: center;
+      max-width: 1000px;
+      grid-gap: 20px;
+    }
+
+  </style>
+</head>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <img class="logo" src="../assets/image/brandred.png" alt="dumbways" />
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="myproject">Add Project</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="testimonial">Testimonials</a>
+          </li>
+        </ul>
+        <a href="contactForm" target="_blank">
+          <button class="btn btn-warning">Contact Me</button></a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container" style="width: 80%;">
+    <div class="main-container">
+      <h2>Hi Welcome to my hut</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique
+        purus orci libero egestas ut. Augue suspendisse blandit lorem massa
+        ipsum, urna, egestas mi, lacinia. Dui fusce etiam libero, lectus amet,
+        risus molestie malesuada. Odio nam purus consectetur euismod congue
+        leo quisque. Turpis amet sollicitudin nunc non in lectus dolor amet.
+        Amet ullamcorper faucibus tincidunt accumsan ac adipiscing arcu. Donec
+        tristique at proin maecenas. Ante elit et iaculis ac sit.
+      </p>
+      <br />
+      <div style="
+              display: flex;
+              align-items: center;
+              justify-content: start;
+              gap: 20px;
+            ">
+        <a href="contactForm" target="_blank">
+          <button class="tombol">contact</button></a>
+        <a class="Download" href="../assets/mycv.pdf" download="newfilename" target="_blank">download CV
+          <img class="download" src="../assets/image/download.png" alt="" />
+        </a>
+      </div>
+      <div class="icon">
+        <a href="https://www.linkedin.com/in/yusron-nur-latief-603111245/" target="_blank"><img class="linkedin"
+            src="../assets/image/linkedin.png" alt="" /></a>
+        <a href="https://www.instagram.com/yn_latip/" target="_blank"><img class="ig"
+            src="../assets/image/instagram.png" alt="" /></a>
+        <a href="https://www.facebook.com/zzuzron/?locale=id_ID" target="_blank"><img class="fb"
+            src="../assets/image/facebook.png" alt="" /></a>
+        <a href="https://twitter.com/?lang=id" target="_blank">
+          <img class="twitter" src="../assets/image/twitter.png" alt="" /></a>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem; margin: 10px;">
+      <img src="../assets/image/_DSF9106_KALIKI STUDIO EDIT.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Yusron Nur Latief</h5>
+        <p class="card-text">Fullstack Developer</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="wrap">
+    <h2 style="text-align: center;">MY PROJECT</h2>
+    <div class="back-container">
+      <div class="container1" id="card">
+        {{#each data}}
+
+          <div class="card" style="width: 350px; margin: 10px;">
+            <img src="{{image}}" alt="Image">
+            <a href="/detail/{{@index}}">
+              <p class="title-content">{{name}}</p>
+            </a>
+            <p class="">{{start_date}}</p>
+            <p class="">{{end_date}}</p>
+            {{!-- <p class="duration">Duration: {{duration}}</p> --}}
+            <p class="content-wrap">{{description}}</p>
+            <p class="content-wrap">{{technologies}}</p>
+            {{!-- <div class="icon">
+              <img src="./assets/image/playstore.png" alt="">
+              <img src="./assets/image/android.png" alt="">
+              <img src="./assets/image/java.png" alt="">
+            </div> --}}
+            {{!-- <div class="bt-card">
+              <a href="/edit-blog/{{@index}}" class="btn btn-warning w-50" style="height: 60%;">Edit</a>
+              <form onsubmit="deletePost({{@index}})" class="formku">
+                <button class="btn btn-warning">Delete</button>
+              </form>
+            </div> --}}
+          </div>
+
+        {{/each}}
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="../assets/js/nav.js"></script>
+</body>
+
+</html>
