@@ -151,24 +151,24 @@
     <div class="container text-center my-5 d-flex flex-column" style="width: 75%;">
         <h1>Edit Project</h1>
         <form method="post" action="/edit-blog">
-        <input type="text" value="{{data.id}}" name ="id" hidden>
+        <input type="text" value="{{id}}" name ="id" hidden >
             <div class="input-group mb-3">
                 <label style="font-weight: bold;" class="fs-4">Project Name</label>
-                <input type="text" class="form-control w-100" placeholder="Project Name" id="projectName" name="title" value="{{data.title}}">
+                <input type="text" class="form-control w-100" placeholder="Project Name" id="projectName" name="name" value="">
             </div>
             <div style="display: flex; gap: 20px;">
                 <div class="input-group mb-3">
                     <label style="font-weight: bold;" class="fs-4">Start Date</label>
-                    <input type="date" class="form-control w-100" id="startdate" name="startdate" value="{{data.startdate}}">
+                    <input type="date" class="form-control w-100" id="startdate" name="start_date" value="">
                 </div>
                 <div class="input-group mb-3">
                     <label style="font-weight: bold;" class="fs-4">End Date</label>
-                    <input type="date" class="form-control w-100" id="enddate" name="enddate" value="{{data.enddate}}">
+                    <input type="date" class="form-control w-100" id="enddate" name="end_date" value="">
                 </div>
             </div>
             <div class="input-group mb-3">
                 <label style="font-weight: bold;" class="fs-4">Description</label>
-                <textarea class="form-control w-100" style="height: 200px" name="content" id="Content">{{data.content}}</textarea>
+                <textarea class="form-control w-100" style="height: 200px" name="description" id="Content"></textarea>
             </div>
             <div class="input-group mb-3">
                 <label style="font-weight: bold; " class="fs-4">Technologies</label>

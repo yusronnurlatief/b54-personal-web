@@ -168,19 +168,19 @@
         <div class="container">
           <div class="card">
             <img src="{{image}}" alt="Image">
-            <a href="/detail/{{@index}}"><p class="title-content">{{name}}</p></a>  
-            <p class="">{{startdate}}</p>
-            <p class="">{{enddate}}</p>
-            <p class="duration">Duration: {{duration}}</p>
-            <p class="content-wrap">Dumbways Web Apps</p>
+            <a href="/detail/{{id}}"><p class="title-content">{{name}}</p></a>  
+            <p class="">Start Date : {{start_date}}</p>
+            <p class="">End Date : {{end_date}}</p>
+            {{!-- <p class="duration">Duration: {{duration}}</p> --}}
+            <p class="content-wrap">{{description}}</p>
             <div class="icon">
               <img src="./assets/image/playstore.png" alt="">
               <img src="./assets/image/android.png" alt="">
               <img src="./assets/image/java.png" alt="">
             </div>
             <div class="bt-card">
-              <a href="/edit-blog/{{@index}}" class="btn btn-warning w-50" style="height: 60%;">Edit</a>
-              <form onsubmit="deletePost({{@index}})" class="formku">
+              <a href="/edit-blog/{{id}}" class="btn btn-warning w-50" style="height: 60%;">Edit</a>
+              <form method="post" class="formku" action="/delete-myproject/{{id}}">
                 <button class="btn btn-warning">Delete</button>
               </form>
             </div>

@@ -20,10 +20,10 @@ app.use(express.urlencoded({ extended: false }));
 app.get("/", home);
 app.get("/contactForm", contact);
 
-app.get("/myproject", addproject);
+app.get("/myproject", blog);
 app.post("/myproject", addBlog);
 app.post("/edit-blog/", editBlog);
-app.delete("/myproject/:id", deleteBlog);
+app.post("/delete-myproject/:id", deleteBlog);
 
 app.get("/add-blog", addBlogView);
 app.get("/edit-blog/:id", editBlogView);
@@ -33,58 +33,68 @@ app.get("/testimonial", testimonial);
 
 const data = [];
 //controller
-async function home(req, res) {
-  const query = "SELECT * FROM projects";
-  const data = await sequelize.query(query, { type: QueryTypes.SELECT });
-  
-  console.log(data)
-  res.render("index",{data});
+
+function home(req, res) {
+  // const query = "SELECT * FROM projects";
+  // const data = await sequelize.query(query, { type: QueryTypes.SELECT });
+
+  res.render("index", { data });
 }
+
 function contact(req, res) {
   res.render("contactForm");
 }
-function detail(req, res) {
+
+async function detail(req, res) {
   const { id } = req.params;
-  const selectedData = data[id];
-  res.render("detail", { data: selectedData });
+  console.log(id);
+  const query = `SELECT * FROM projects WHERE id = ${id}`;
+
+  const data = await sequelize.query(query, { type: QueryTypes.SELECT });
+
+  console.log("baca data", data[0]);
+  res.render("detail", { data: data[0] });
 }
-async function addproject(req, res) {
+
+async function blog(req, res) {
   const query = "SELECT * FROM projects";
   const data = await sequelize.query(query, { type: QueryTypes.SELECT });
 
   res.render("myproject", { data });
 }
 
-function addBlog(req, res) {
-  const { title, content, startdate, enddate } = req.body;
-  data.unshift({
-    title,
-    content,
-    startdate,
-    enddate,
-    image:
-      "https://images.pexels.com/photos/17039413/pexels-photo-17039413/free-photo-of-vaca.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
-  });
-  console.log(data);
+function formatDateToYYYYMMDD(dateString) {
+  if (!dateString) return null;
+
+  const date = new Date(dateString);
+  const formattedDate = date.toLocaleDateString("en-CA");
+
+  return formattedDate;
+}
+
+async function addBlog(req, res) {
+  const { name, description, technologies } = req.body;
+
+  const startDateInput = req.body.start_date;
+  const endDateInput = req.body.end_date; 
+
+  const start_date = formatDateToYYYYMMDD(startDateInput);
+  const end_date = formatDateToYYYYMMDD(endDateInput);
+
+  const query = `INSERT INTO projects(name,start_date,end_date,description,technologies,image,"createdAt","updatedAt") VALUES('${name}','${start_date}','${end_date}','${description}','Node JS','https://images.pexels.com/photos/18383901/pexels-photo-18383901/free-photo-of-bangunan-gedung-membangun-mendirikan.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',now(),now())`;
+  const data = await sequelize.query(query, { type: QueryTypes.INSERT });
+
   res.redirect("myproject");
 }
 
-function deleteBlog(req, res) {
+async function deleteBlog(req, res) {
   const { id } = req.params;
-  data.splice(id, 1);
+  const query = `DELETE FROM projects WHERE id=${id}`;
+  const data = await sequelize.query(query, { type: QueryTypes.DELETE });
+
   res.redirect("/myproject");
 }
 
-function editBlog(req, res) {
-  const { title, content, id, startdate, enddate } = req.body;
-  data[id] = {
-    title,
-    content,
-    startdate,
-    enddate,
-  };
-  res.redirect("/myproject");
-}
 
 function addBlogView(req, res) {
   res.render("add-blog");
@@ -92,10 +102,22 @@ function addBlogView(req, res) {
 
 function editBlogView(req, res) {
   const { id } = req.params;
-  const selectedData = data[id];
-  selectedData.id = id;
-  res.render("edit-blog", { data: selectedData });
+ 
+  console.log(id)
+  res.render("edit-blog",{ id: id });
 }
+
+async function editBlog(req, res) {
+
+  const { id, name,start_date, end_date, description} = req.body;
+  console.log("id ne iki",id)
+  const query = `UPDATE projects SET name = '${name}', start_date = '${start_date}', end_date = '${end_date}', description = '${description}', technologies = 'Node JS', image = 'https://images.pexels.com/photos/18383901/pexels-photo-18383901/free-photo-of-bangunan-gedung-membangun-mendirikan.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',"createdAt" = now(), "updatedAt" = now() WHERE id = ${id}`;
+  const data = await sequelize.query(query, { type: QueryTypes.UPDATE });
+
+  res.redirect("/myproject");
+}
+
+
 
 function testimonial(req, res) {
   res.render("testimonial");
