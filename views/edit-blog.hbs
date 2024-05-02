@@ -137,13 +137,13 @@
                         <a class="nav-link " aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link active" href="myproject">Add Project</a>
+                        <a class="nav-link active" href="/myproject">Add Project</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="testimonial">Testimonials</a>
+                        <a class="nav-link" href="/testimonial">Testimonials</a>
                     </li>
                 </ul>
-                <a href="contactForm" target="_blank">
+                <a href="/contactForm" target="_blank">
                     <button class="btn btn-warning">Contact Me</button></a>
             </div>
         </div>
@@ -234,33 +234,36 @@
         crossorigin="anonymous"></script>
     <script src="../assets/js/nav.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Mendapatkan nilai technologies yang dipilih saat ini dari data proyek
-        const currentTechnologies = "{{data.technologies}}".split(',').map(tech => tech.trim());
+document.addEventListener('DOMContentLoaded', function() {
+    // Mendapatkan nilai technologies yang dipilih saat ini dari data proyek
+    const currentTechnologies = "{{data.technologies}}".split(',').map(tech => tech.trim());
 
-        // Mendapatkan semua checkbox berdasarkan nama atribut
-        const checkboxes = document.querySelectorAll('input[type="checkbox"][name="technologies"]');
+    // Mendapatkan semua checkbox berdasarkan nama atribut
+    const checkboxes = document.querySelectorAll('input[type="checkbox"][name="technologies"]');
 
-        // Mengecek dan menandai (checked) checkbox berdasarkan nilai technologies yang dipilih saat ini
-        checkboxes.forEach(checkbox => {
-            if (currentTechnologies.includes(checkbox.value)) {
-                checkbox.checked = true;
-            }
-        });
-
-        // Mengelola submit form untuk memperbarui nilai technologies sebelum dikirim
-        const editProjectForm = document.getElementById('editProjectForm');
-        editProjectForm.addEventListener('submit', function(event) {
-            // Mendapatkan kembali semua checkbox saat ini setelah pengguna melakukan perubahan
-            const updatedCheckboxes = document.querySelectorAll('input[type="checkbox"][name="technologies"]:checked');
-
-            // Mendapatkan nilai technologies yang dipilih setelah pengguna melakukan perubahan
-            const updatedTechnologies = Array.from(updatedCheckboxes).map(checkbox => checkbox.value);
-
-            // Mengatur nilai technologies ke dalam input tersembunyi di dalam form
-            document.querySelector('input[name="technologies"]').value = updatedTechnologies.join(', ');
-        });
+    // Mengecek dan menandai (checked) checkbox berdasarkan nilai technologies yang dipilih saat ini
+    checkboxes.forEach(checkbox => {
+        if (currentTechnologies.includes(checkbox.value)) {
+            checkbox.checked = true;
+        }
     });
+
+    // Mengelola submit form untuk memperbarui nilai technologies sebelum dikirim
+    const editProjectForm = document.getElementById('editProjectForm');
+    editProjectForm.addEventListener('submit', function(event) {
+        // Mendapatkan semua checkbox yang dicentang
+        const selectedCheckboxes = document.querySelectorAll('input[type="checkbox"][name="technologies"]:checked');
+        
+        // Mengumpulkan nilai teknologi dari checkbox yang dicentang ke dalam array
+        const technologies = [];
+        selectedCheckboxes.forEach(checkbox => {
+            technologies.push(checkbox.value);
+        });
+        
+        // Mengatur nilai technologies ke dalam input tersembunyi di dalam form
+        document.querySelector('input[name="technologies"]').value = technologies.join(', ');
+    });
+});
 </script>
 </body>
 

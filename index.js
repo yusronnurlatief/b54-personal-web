@@ -7,7 +7,7 @@ const { title } = require("process");
 const config = require("./config/config.json");
 const { Sequelize, QueryTypes, where } = require("sequelize");
 const sequelize = new Sequelize(config.development);
-const blogModel = require("./models").project
+const blogModel = require("./models").project;
 
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "./views"));
@@ -75,21 +75,27 @@ function formatDateToYYYYMMDD(dateString) {
 
 async function addBlog(req, res) {
   const { name, description } = req.body;
-  const technologies = req.body.technologies || []; 
-  
-  const technologiesString = technologies.join(', ');
+
+  const technologies = Array.isArray(req.body.technologies)
+    ? req.body.technologies
+    : [];
+
+  const technologiesString = technologies.join(",");
 
   const startDateInput = req.body.start_date;
-  const endDateInput = req.body.end_date; 
+  const endDateInput = req.body.end_date;
 
   const start_date = formatDateToYYYYMMDD(startDateInput);
   const end_date = formatDateToYYYYMMDD(endDateInput);
 
-  const query = `INSERT INTO projects(name,start_date,end_date,description,technologies,image,"createdAt","updatedAt") VALUES('${name}','${start_date}','${end_date}','${description}','${technologiesString}','https://images.pexels.com/photos/18383901/pexels-photo-18383901/free-photo-of-bangunan-gedung-membangun-mendirikan.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',now(),now())`;
+  const imageUrl =
+    "https://images.pexels.com/photos/18383901/pexels-photo-18383901/free-photo-of-bangunan-gedung-membangun-mendirikan.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load";
+
+  const query = `INSERT INTO projects(name, start_date, end_date, description, technologies, image, "createdAt", "updatedAt") VALUES('${name}', '${start_date}', '${end_date}', '${description}', '${technologiesString}', '${imageUrl}', now(), now())`;
+
   const data = await sequelize.query(query, { type: QueryTypes.INSERT });
 
-
-  res.redirect("myproject");
+  res.redirect("/myproject");
 }
 
 async function deleteBlog(req, res) {
@@ -100,33 +106,31 @@ async function deleteBlog(req, res) {
   res.redirect("/myproject");
 }
 
-
 function addBlogView(req, res) {
   res.render("add-blog");
 }
 
 async function editBlogView(req, res) {
   const { id } = req.params;
- const data = await blogModel.findOne({
-  where:{id}
- })
-  res.render("edit-blog",{ data});
+  const data = await blogModel.findOne({
+    where: { id },
+  });
+  res.render("edit-blog", { data });
 }
 
 async function editBlog(req, res) {
+  const { id, name, start_date, end_date, description } = req.body;
+  const technologies = Array.isArray(req.body.technologies)
+    ? req.body.technologies
+    : [];
+  const technologiesString = technologies.join(",");
 
-  const { id, name,start_date, end_date, description } = req.body;
-  const technologies = req.body.technologies || []; 
-  
-  const technologiesString = technologies.join(', ');
-  console.log("id ne iki",id)
   const query = `UPDATE projects SET name = '${name}', start_date = '${start_date}', end_date = '${end_date}', description = '${description}', technologies = '${technologiesString}', image = 'https://images.pexels.com/photos/18383901/pexels-photo-18383901/free-photo-of-bangunan-gedung-membangun-mendirikan.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',"createdAt" = now(), "updatedAt" = now() WHERE id = ${id}`;
+
   const data = await sequelize.query(query, { type: QueryTypes.UPDATE });
 
   res.redirect("/myproject");
 }
-
-
 
 function testimonial(req, res) {
   res.render("testimonial");
