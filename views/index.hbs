@@ -24,13 +24,15 @@
     .active {
       font-weight: bold !important;
     }
-     .wrap {
+
+    .wrap {
       display: block;
       background-color: #f3f3f3;
       width: 100%;
       padding-bottom: 20px;
     }
-        .back-container {
+
+    .back-container {
       display: flex;
       width: 100%;
     }
@@ -39,12 +41,11 @@
       width: 100%;
       display: flex;
       flex-wrap: wrap;
-        justify-content: center; 
-  align-items: center;
+      justify-content: center;
+      align-items: center;
       max-width: 1000px;
       grid-gap: 20px;
     }
-
   </style>
 </head>
 </head>
@@ -69,12 +70,25 @@
             <a class="nav-link" href="testimonial">Testimonials</a>
           </li>
         </ul>
+        <a class="nav-link" style="margin-left: 20px; margin-right :20px;" href="register"{{#if isLogin}}hidden{{/if}}  >Register</a>
+        <a class="nav-link" style="margin-left: 20px; margin-right :20px;" href="login" {{#if isLogin}}hidden{{/if}}>Login</a>
+        {{#if isLogin}}
+        
+        <h4>Halo, {{user.name}}</h4>
+        <form action="/logout" method="post">
+          <button class="btn btn-danger" style="margin-left: 30px; margin-right:30px;">Log Out</button>
+        </form>
+        {{/if}}
         <a href="contactForm" target="_blank">
           <button class="btn btn-warning">Contact Me</button></a>
       </div>
     </div>
   </nav>
-
+  {{#if messages.success}}
+  <div class="alert alert-success" role="alert">
+      {{messages.success}}
+  </div>
+  {{/if}}
   <div class="container" style="width: 80%;">
     <div class="main-container">
       <h2>Hi Welcome to my hut</h2>
@@ -119,35 +133,35 @@
       </div>
     </div>
   </div>
-  
+
   {{!-- <div class="wrap">
     <h2 style="text-align: center;">MY PROJECT</h2>
     <div class="back-container">
       <div class="container1" id="card">
         {{#each data}}
 
-          <div class="card" style="width: 350px; margin: 10px;">
-            <img src="{{image}}" alt="Image">
-            <a href="/detail/{{id}}">
-              <p class="title-content">{{name}}</p>
-            </a>
-            <p class="">{{start_date}}</p>
-            <p class="">{{end_date}}</p>
-            <p class="duration">Duration: {{duration}}</p>
-            <p class="content-wrap">{{description}}</p>
-            <p class="content-wrap">{{technologies}}</p>
-            <div class="icon">
-              <img src="./assets/image/playstore.png" alt="">
-              <img src="./assets/image/android.png" alt="">
-              <img src="./assets/image/java.png" alt="">
-            </div>
-            <div class="bt-card">
-              <a href="/edit-blog/{{}}" class="btn btn-warning w-50" style="height: 60%;">Edit</a>
-              <form onsubmit="deletePost({{}})" class="formku">
-                <button class="btn btn-warning">Delete</button>
-              </form>
-            </div>
+        <div class="card" style="width: 350px; margin: 10px;">
+          <img src="{{image}}" alt="Image">
+          <a href="/detail/{{id}}">
+            <p class="title-content">{{name}}</p>
+          </a>
+          <p class="">{{start_date}}</p>
+          <p class="">{{end_date}}</p>
+          <p class="duration">Duration: {{duration}}</p>
+          <p class="content-wrap">{{description}}</p>
+          <p class="content-wrap">{{technologies}}</p>
+          <div class="icon">
+            <img src="./assets/image/playstore.png" alt="">
+            <img src="./assets/image/android.png" alt="">
+            <img src="./assets/image/java.png" alt="">
           </div>
+          <div class="bt-card">
+            <a href="/edit-blog/{{}}" class="btn btn-warning w-50" style="height: 60%;">Edit</a>
+            <form onsubmit="deletePost({{}})" class="formku">
+              <button class="btn btn-warning">Delete</button>
+            </form>
+          </div>
+        </div>
 
         {{/each}}
       </div>

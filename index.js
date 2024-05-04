@@ -8,6 +8,10 @@ const config = require("./config/config.json");
 const { Sequelize, QueryTypes, where } = require("sequelize");
 const sequelize = new Sequelize(config.development);
 const blogModel = require("./models").project;
+const User = require("./models").user;
+const bcrypt = require("bcrypt");
+const session = require("express-session")
+const flash = require("express-flash")
 
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "./views"));
@@ -16,6 +20,20 @@ app.use("/assets", express.static(path.join(__dirname, "./assets")));
 
 //body parser
 app.use(express.urlencoded({ extended: false }));
+
+
+app.use(session({
+  name: "mysession",
+  secret : "secret",
+  resave : false,
+  saveUninitialized :true,
+  cookie:{
+    secure:false,
+    maxAge:1000*60*60*24
+  }
+}))
+
+app.use(flash())
 
 //routes
 app.get("/", home);
@@ -32,14 +50,76 @@ app.get("/edit-blog/:id", editBlogView);
 app.get("/detail/:id", detail);
 app.get("/testimonial", testimonial);
 
-const data = [];
+app.get("/login", loginView);
+app.get("/register", registerView);
+
+app.post("/register", register);
+app.post("/login", login);
+app.post("/logout",logout);
+
 //controller
+const data =[]
+function loginView(req, res) {
+  res.render("login");
+}
+function registerView(req, res) {
+  res.render("register");
+}
+async function login(req, res) {
+  const { email, password } = req.body;
+
+  const user = await User.findOne({
+    where: {
+      email,
+    },
+  });
+
+  if(!user){
+    req.flash("danger","Email/Password is Wrong!")
+    return res.redirect("/login")
+  }
+
+  const isPasswordValid = await bcrypt.compare(password,user.password)
+  if(!isPasswordValid){
+    req.flash("danger","Email/Password is Wrong")
+    return res.redirect("/login")
+  }
+
+  req.session.isLogin = true
+  req.session.user = {
+    name : user.name,
+    email :user.email
+  }
+  req.flash("success","Login Success!")
+  res.redirect("/")
+}
+async function register(req, res) {
+  const { name, email, password } = req.body;
+  const salt = 10;
+  const hashedPassword = await bcrypt.hash(password, salt);
+
+  User.create({
+    name,
+    email,
+    password: hashedPassword,
+  });
+  res.redirect("/login");
+}
+
+async function logout(req,res){
+  req.session.destroy(function(err){
+    if(err) return console.error("Failed")
+
+    res.redirect("/")
+  })
+}
 
 function home(req, res) {
   // const query = "SELECT * FROM projects";
   // const data = await sequelize.query(query, { type: QueryTypes.SELECT });
-
-  res.render("index", { data });
+  const isLogin = req.session.isLogin
+  const user = req.session.user
+  res.render("index",{isLogin,user});
 }
 
 function contact(req, res) {
@@ -61,7 +141,10 @@ async function blog(req, res) {
   const query = "SELECT * FROM projects";
   const data = await sequelize.query(query, { type: QueryTypes.SELECT });
 
-  res.render("myproject", { data });
+  const isLogin = req.session.isLogin
+  const user = req.session.user
+
+  res.render("myproject", { data,isLogin,user });
 }
 
 function formatDateToYYYYMMDD(dateString) {
