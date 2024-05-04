@@ -24,13 +24,22 @@
     .active {
       font-weight: bold !important;
     }
-     .wrap {
+
+    .wrap {
       display: block;
       background-color: #f3f3f3;
       width: 100%;
       padding-bottom: 20px;
     }
-        .back-container {
+    .wrap .head{
+      text-align: center;
+      font-size: 30px;
+      font-weight: bold;
+      margin: 20px 20px;
+      padding: 20px 20px;
+    }
+
+    .back-container {
       display: flex;
       width: 100%;
     }
@@ -39,12 +48,46 @@
       width: 100%;
       display: flex;
       flex-wrap: wrap;
-        justify-content: center; 
-  align-items: center;
-      max-width: 1000px;
-      grid-gap: 20px;
+      justify-content: center;
+      align-items: center;
+    }
+    .container1 .mid-container{
+        gap: 30px; 
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: center; 
+  max-width: 1200px;
     }
 
+    .card1 {
+      width: 350px;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      padding: 10px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0px 0px 20px 10px gainsboro;
+    }
+
+    .card1 img {
+      width: 100%;
+      height: 200px;
+      border-radius: 10px 10px 0px 0px;
+    }
+
+    .title-content {
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: bold;
+      margin: 10px 0px 0px 0px;
+      cursor: pointer;
+      color: black;
+    }
+    .card-text{
+      margin: 0px;
+      padding: 0px;
+    }
   </style>
 </head>
 </head>
@@ -69,12 +112,27 @@
             <a class="nav-link" href="testimonial">Testimonials</a>
           </li>
         </ul>
+        <a class="nav-link" style="margin-left: 20px; margin-right :20px;" href="register" {{#if
+          isLogin}}hidden{{/if}}>Register</a>
+        <a class="nav-link" style="margin-left: 20px; margin-right :20px;" href="login" {{#if
+          isLogin}}hidden{{/if}}>Login</a>
+        {{#if isLogin}}
+
+        <h4>Halo, {{user.name}}</h4>
+        <form action="/logout" method="post">
+          <button class="btn btn-danger" style="margin-left: 30px; margin-right:30px;">Log Out</button>
+        </form>
+        {{/if}}
         <a href="contactForm" target="_blank">
           <button class="btn btn-warning">Contact Me</button></a>
       </div>
     </div>
   </nav>
-
+  {{#if messages.success}}
+  <div class="alert alert-success" role="alert">
+    {{messages.success}}
+  </div>
+  {{/if}}
   <div class="container" style="width: 80%;">
     <div class="main-container">
       <h2>Hi Welcome to my hut</h2>
@@ -119,40 +177,38 @@
       </div>
     </div>
   </div>
-  
-  {{!-- <div class="wrap">
-    <h2 style="text-align: center;">MY PROJECT</h2>
-    <div class="back-container">
-      <div class="container1" id="card">
-        {{#each data}}
 
-          <div class="card" style="width: 350px; margin: 10px;">
+  <div class="wrap">
+    <p class="head">MY PROJECT</p>
+    <div class="container1">
+      <div class="mid-container" id="">
+        {{#each data}}
+        <div class="">
+          <div class="card1">
             <img src="{{image}}" alt="Image">
-            <a href="/detail/{{id}}">
+            <a href="/detail/{{id}}" style="text-decoration: none;">
               <p class="title-content">{{name}}</p>
             </a>
-            <p class="">{{start_date}}</p>
-            <p class="">{{end_date}}</p>
-            <p class="duration">Duration: {{duration}}</p>
-            <p class="content-wrap">{{description}}</p>
-            <p class="content-wrap">{{technologies}}</p>
-            <div class="icon">
+            <p class="card-text" style="">Start Date : {{start_date}}</p>
+            <p class="card-text" style="">End Date : {{end_date}}</p>
+            <p class="card-text" style="font-size: 14px; color:gray;"> {{createdAtFormatted}} | {{user_name}}</p>
+            <p class="card-text" style="
+            width: 30ch;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;">
+            Description : {{description}}</p>
+            {{!-- <div class="icon">
               <img src="./assets/image/playstore.png" alt="">
               <img src="./assets/image/android.png" alt="">
               <img src="./assets/image/java.png" alt="">
-            </div>
-            <div class="bt-card">
-              <a href="/edit-blog/{{}}" class="btn btn-warning w-50" style="height: 60%;">Edit</a>
-              <form onsubmit="deletePost({{}})" class="formku">
-                <button class="btn btn-warning">Delete</button>
-              </form>
-            </div>
+            </div> --}}
           </div>
-
+        </div>
         {{/each}}
       </div>
     </div>
-  </div> --}}
+  </div>
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
