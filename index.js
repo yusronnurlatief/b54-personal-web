@@ -152,10 +152,25 @@ function contact(req, res) {
 async function detail(req, res) {
   const { id } = req.params;
   console.log(id);
-  const query = `SELECT * FROM projects WHERE id = ${id}`;
+  const query = `SELECT public.projects.id, public.projects.name, public.projects.start_date, public.projects.end_date, public.projects.description, public.projects.technologies, public.projects.image, public.projects.id, public.projects."createdAt", public.users.name AS user_name FROM public.users JOIN public.projects ON public.users.id=public.projects.user_id WHERE public.projects.id = ${id};`;
 
   const data = await sequelize.query(query, { type: QueryTypes.SELECT });
-
+  data.forEach((project) => {
+    const createdAt = new Date(project.createdAt);
+    const formattedDate = createdAt.toLocaleString("id-ID", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+      timeZoneName: "short",
+    });
+    const formattedTime = formattedDate.replace("pukul", "");
+    project.createdAtFormatted = formattedTime;
+  });
+  
   console.log("baca data", data[0]);
   res.render("detail", { data: data[0] });
 }
